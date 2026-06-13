@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if product %}
+<div class="mb-3">
+	<a href="{% url 'index' %}" class="btn btn-outline-secondary btn-sm">&larr; Back to catalog</a>
+</div>
+
+<div class="card product-detail-card border-0 shadow-sm">
+	<div class="row g-0 align-items-stretch">
+		<div class="col-md-6 product-detail-image-wrap">
+			<img
+				src="{{ product.image }}"
+				class="img-fluid rounded-start product-detail-image"
+				alt="{{ product.name }}"
+			/>
+		</div>
+
+		<div class="col-md-6">
+			<div class="card-body p-4 p-lg-5">
+				<span class="badge text-bg-light border mb-3 text-capitalize">{{ product.category }}</span>
+				<h1 class="h2 mb-3">{{ product.name }}</h1>
+
+				<div class="mb-3">
+					{% if product.discount > 0 %}
+					<p class="mb-1">
+						<span class="fs-4 fw-semibold text-success">{{ product.price }}$</span>
+						<span class="badge text-bg-danger ms-2">-{{ product.discount }}%</span>
+					</p>
+					{% else %}
+					<p class="fs-4 fw-semibold mb-1">{{ product.price }}$</p>
+					{% endif %}
+				</div>
+
+				<p class="text-muted mb-4">{{ product.description }}</p>
+
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item px-0 d-flex justify-content-between">
+						<span class="text-muted">Product ID</span>
+						<span>#{{ product.id }}</span>
+					</li>
+					<li class="list-group-item px-0 d-flex justify-content-between">
+						<span class="text-muted">Stock</span>
+						{% if product.stock > 0 %}
+						<span class="text-success">{{ product.stock }} available</span>
+						{% else %}
+						<span class="text-danger">Out of stock</span>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% else %}
+<div class="alert alert-warning">
+	Product not found. <a href="{% url 'index' %}">Return to catalog</a>.
+</div>
+{% endif %}
+{% endblock %}

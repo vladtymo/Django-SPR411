@@ -4,6 +4,37 @@
     padding: 10px;
 }
 
+.product-detail-card {
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.product-detail-image-wrap {
+    background: linear-gradient(140deg, #f6f7f9, #eef1f5);
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-detail-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    padding: 20px;
+}
+
+@media (max-width: 767px) {
+    .product-detail-image-wrap {
+        min-height: 300px;
+    }
+
+    .product-detail-image {
+        max-height: 360px;
+        padding: 14px;
+    }
+}
+
 /* .card {
     width: 100% !important;
 } */

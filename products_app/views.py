@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 products = [
     {
+        'id': 1,
         'name': 'iPhone X',
         'description': 'Description for product 1',
         'price': 19.99,
@@ -11,6 +12,7 @@ products = [
         'image': 'https://content1.rozetka.com.ua/goods/images/big/221203654.jpg',
     },
     {
+        'id': 2,
         'name': 'Samsung Galaxy S21',
         'description': 'Description for product 2',
         'price': 29.99,
@@ -20,6 +22,7 @@ products = [
         'image': 'https://content.rozetka.com.ua/goods/images/big/487792065.jpg',
     },
     {
+        'id': 3,
         'name': 'MacBook Pro',
         'description': 'Description for product 3',
         'price': 9.99,
@@ -34,6 +37,10 @@ products = [
 def product_list(request):
     # additional logic (get data from db, validate forms, etc.) can be added here
     return render(request, 'products/product_list.html', {'products': products})
+
+def product_detail(request, product_id):
+    product = next((p for p in products if p['id'] == product_id), None)
+    return render(request, 'products/product_detail.html', {'product': product})
 
 def about(request):
     return render(request, 'products/about.html')
