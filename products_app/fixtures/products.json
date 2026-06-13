@@ -1,0 +1,80 @@
+[
+  {
+    "model": "products_app.Product",
+    "pk": 1,
+    "fields": {
+      "name": "Wireless Mouse",
+      "image_url": "https://images.prom.ua/5546444034_w640_h640_5546444034.jpg",
+      "description": "Ergonomic wireless mouse with adjustable DPI.",
+      "price": 29.99,
+      "stock": 120,
+      "discount": 10,
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products_app.Product",
+    "pk": 2,
+    "fields": {
+      "name": "Notebook A5",
+      "image_url": "https://euro-brand.com.ua/wp-content/uploads/2023/08/054a46cb-8df1-4afa-afa9-5e8056df6e17.png",
+      "description": "A5 lined notebook with durable cover.",
+      "price": 4.5,
+      "stock": 500,
+      "discount": 0,
+      "created_at": "2024-01-16T10:00:00Z"
+    }
+  },
+  {
+    "model": "products_app.Product",
+    "pk": 3,
+    "fields": {
+      "name": "Ceramic Coffee Mug",
+      "image_url": "https://images.prom.ua/5546444034_w640_h640_5546444034.jpg",
+      "description": "350ml ceramic mug, dishwasher safe.",
+      "price": 12.0,
+      "stock": 200,
+      "discount": 5,
+      "created_at": "2024-01-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "products_app.Product",
+    "pk": 4,
+    "fields": {
+      "name": "Visio Pro",
+      "image_url": "https://images.prom.ua/5546444034_w640_h640_5546444034.jpg",
+      "description": "Over-ear Bluetooth headphones with noise cancellation.",
+      "price": 79.99,
+      "stock": 80,
+      "discount": 15,
+      "created_at": "2024-01-18T10:00:00Z"
+    }
+  },
+  {
+    "model": "products_app.Product",
+    "pk": 5,
+    "fields": {
+      "name": "Bluetooth Speaker",
+      "image_url": "https://images.prom.ua/5546444034_w640_h640_5546444034.jpg",
+      "description": "Over-ear Bluetooth headphones with noise cancellation.",
+      "price": 79.99,
+      "stock": 0,
+      "discount": 15,
+      "created_at": "2024-01-18T10:00:00Z"
+    }
+  },
+  {
+    "model": "products_app.Product",
+    "pk": 6,
+    "fields": {
+      "name": "Klipac Wireless Speaker",
+      "image_url": "https://images.prom.ua/5546444034_w640_h640_5546444034.jpg",
+      "description": "Over-ear Bluetooth headphones with noise cancellation.",
+      "price": 79.99,
+      "stock": 7,
+      "discount": 15,
+      "created_at": "2024-01-18T10:00:00Z"
+    }
+  }
+]

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
-products = [
+from products_app.models import Product
+
+products_old = [
     {
         'id': 1,
         'name': 'iPhone X',
@@ -36,10 +38,11 @@ products = [
 # Create your views here.
 def product_list(request):
     # additional logic (get data from db, validate forms, etc.) can be added here
+    products = Product.objects.all()
     return render(request, 'products/product_list.html', {'products': products})
 
 def product_detail(request, product_id):
-    product = next((p for p in products if p['id'] == product_id), None)
+    product = Product.objects.get(id=product_id) # pk=product_id
     return render(request, 'products/product_detail.html', {'product': product})
 
 def about(request):
