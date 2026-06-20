@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {% block content %}
+<h1>Create Product</h1>
+
+<form method="post" action="{% url 'create_product' %}">
+  {% csrf_token %} 
+
+  <div class="form-group">
+    {% for field in form %}
+    <div class="mb-3">
+      {{ field.label_tag }} {{ field }} 
+      {% if field.errors %}
+      <div class="invalid-feedback d-block">{{ field.errors }}</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+{% endblock %}

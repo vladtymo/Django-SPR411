@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
+from products_app.forms import product
 from products_app.models import Product
 
 products_old = [
@@ -58,3 +59,18 @@ def delete_product(request, product_id):
     product.delete()
     
     return redirect('/products/admin/')
+
+def create_product(request):
+    if request.method == 'GET':
+        form = product.ProductForm()
+        return render(request, 'products/create.html', {'form': form})
+    
+    elif request.method == 'POST':
+        form = product.ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/products/admin/')
+        else:
+            return render(request, 'products/create.html', {'form': form})
+
+    return render(request, 'products/create.html')
