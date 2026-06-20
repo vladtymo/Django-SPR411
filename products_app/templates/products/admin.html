@@ -1,0 +1,47 @@
+{% extends "layout.html" %} {% block content %}
+<h1>Product Admin Panel</h1>
+
+{% if products  %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+    <tr class="align-middle">
+      <th scope="row">{{ product.id }}</th>
+      <td><img width="50" src="{{ product.image_url }}" alt="{{ product.name }}" class="img-thumbnail" /></td>
+      <td>
+         <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+      </td>
+      <td>
+        {% if product.stock > 0 %}
+        <span class="badge text-bg-success">{{ product.stock }} pcs</span>
+        {% else %}
+        <span class="badge text-bg-secondary">Out of stock</span>
+        {% endif %}
+      </td>
+      <td>{{ product.price }}$</td>
+      <td>
+        <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-outline-primary">View</a>
+        <a href="#" class="btn btn-sm btn-outline disabled">Edit</a>
+        <a href="{% url 'delete_product' product.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="text-center py-5">
+  <img src="https://cdni.iconscout.com/illustration/premium/thumb/no-product-illustration-svg-download-png-6632286.png" alt="No products" class="img-fluid" />
+</div>
+{% endif %}
+
+{% endblock %}

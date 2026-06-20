@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from products_app.models import Product
 
@@ -42,8 +42,19 @@ def product_list(request):
     return render(request, 'products/product_list.html', {'products': products})
 
 def product_detail(request, product_id):
-    product = Product.objects.get(id=product_id) # pk=product_id
+    # product = Product.objects.get(id=product_id) # pk=product_id
+    product = get_object_or_404(Product, id=product_id)
     return render(request, 'products/product_detail.html', {'product': product})
 
 def about(request):
     return render(request, 'products/about.html')
+
+def get_admin_list(request):
+    products = Product.objects.all()
+    return render(request, 'products/admin.html', {'products': products})
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product.delete()
+    
+    return redirect('/products/admin/')
