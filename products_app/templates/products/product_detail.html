@@ -3,7 +3,7 @@
 {% block content %}
 {% if product %}
 <div class="mb-3">
-	<a href="{% url 'index' %}" class="btn btn-outline-secondary btn-sm">&larr; Back to catalog</a>
+	<button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm">&larr; Go Back</button>
 </div>
 
 <div class="card product-detail-card border-0 shadow-sm">
