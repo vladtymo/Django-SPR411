@@ -61,16 +61,28 @@ def delete_product(request, product_id):
     return redirect('/products/admin/')
 
 def create_product(request):
-    if request.method == 'GET':
-        form = product.ProductForm()
-        return render(request, 'products/create.html', {'form': form})
-    
-    elif request.method == 'POST':
+    if request.method == 'POST':
         form = product.ProductForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/products/admin/')
         else:
             return render(request, 'products/create.html', {'form': form})
+        
+    form = product.ProductForm()
+    return render(request, 'products/create.html', {'form': form})
 
-    return render(request, 'products/create.html')
+def edit_product(request, product_id):
+    item = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        form = product.ProductForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('/products/admin/')
+        else:
+            return render(request, 'products/edit.html', {'form': form})
+
+    
+    form = product.ProductForm(instance=item)
+    return render(request, 'products/edit.html', {'form': form})
