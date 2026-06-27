@@ -7,6 +7,7 @@ class Product(models.Model):
         ('clothing', 'Clothing'),
         ('books', 'Books'),
         ('furniture', 'Furniture'),
+        ('others', 'Others'),
     ]
 
     name = models.CharField(max_length=100)
@@ -15,7 +16,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
-    # category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='others')
     discount = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
