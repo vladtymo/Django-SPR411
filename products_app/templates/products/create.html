@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 <h1>Create Product</h1>
 
-<form method="post" action="{% url 'create_product' %}">
+<form method="post" enctype="multipart/form-data" action="{% url 'create_product' %}">
   {% csrf_token %} 
 
   <div class="form-group">

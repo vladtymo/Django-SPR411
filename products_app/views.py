@@ -62,7 +62,8 @@ def delete_product(request, product_id):
 
 def create_product(request):
     if request.method == 'POST':
-        form = product.ProductForm(request.POST)
+        print('POST', request.POST)
+        form = product.ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/products/admin/')
@@ -76,7 +77,7 @@ def edit_product(request, product_id):
     item = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':
-        form = product.ProductForm(request.POST, instance=item)
+        form = product.ProductForm(request.POST, request.FILES, instance=item)
         if form.is_valid():
             form.save()
             return redirect('/products/admin/')

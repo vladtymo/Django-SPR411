@@ -6,7 +6,11 @@
   {% for product in products %}
   <div class="col">
     <div class="card h-100">
-      <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}" />
+      {% if product.image %}
+      <img width="50" src="{{ product.image.url }}" alt="{{ product.name }}"  class="card-img-top" />
+      {% else %}
+      <img width="50" src="https://img.magnific.com/free-vector/illustration-gallery-icon_53876-27002.jpg?semt=ais_hybrid&w=740&q=80" alt="{{ product.name }}" class="card-img-top" />
+      {% endif %}
       <div class="card-body">
         <h5 class="card-title">
           <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>

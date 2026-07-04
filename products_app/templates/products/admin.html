@@ -18,7 +18,13 @@
     {% for product in products %}
     <tr class="align-middle">
       <th scope="row">{{ product.id }}</th>
-      <td><img width="50" src="{{ product.image_url }}" alt="{{ product.name }}" class="img-thumbnail" /></td>
+      <td>
+        {% if product.image %}
+        <img width="50" src="{{ product.image.url }}" alt="{{ product.name }}" class="img-thumbnail" />
+        {% else %}
+        <img width="50" src="https://img.magnific.com/free-vector/illustration-gallery-icon_53876-27002.jpg?semt=ais_hybrid&w=740&q=80" alt="{{ product.name }}" class="img-thumbnail" />
+        {% endif %}
+      </td>
       <td>
          <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
       </td>
