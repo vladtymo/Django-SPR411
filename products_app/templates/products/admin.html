@@ -38,9 +38,17 @@
       </td>
       <td>{{ product.price }}$</td>
       <td>
-        <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-outline-primary">View</a>
-        <a href="{% url 'edit_product' product.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
-        <a href="{% url 'delete_product' product.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+        <div class="btn-group" role="group">
+          <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-outline-primary">
+            <i class="bi bi-eye-fill"></i>
+          </a>
+          <a href="{% url 'edit_product' product.id %}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-pen-fill"></i>
+          </a>
+          <a href="{% url 'delete_product' product.id %}" class="btn btn-sm btn-outline-danger">
+            <i class="bi bi-trash-fill"></i>
+          </a>
+        </div>
       </td>
     </tr>
     {% endfor %}
