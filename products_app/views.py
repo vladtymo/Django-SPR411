@@ -1,5 +1,6 @@
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
-
+    
 from products_app.forms import product
 from products_app.models import Product
 
@@ -57,6 +58,8 @@ def get_admin_list(request):
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     product.delete()
+
+    messages.error(request, 'Product deleted successfully!')
     
     return redirect('/products/admin/')
 
@@ -66,6 +69,7 @@ def create_product(request):
         form = product.ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Product created successfully!')
             return redirect('/products/admin/')
         else:
             return render(request, 'products/create.html', {'form': form})
@@ -80,6 +84,7 @@ def edit_product(request, product_id):
         form = product.ProductForm(request.POST, request.FILES, instance=item)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Product updated successfully!')
             return redirect('/products/admin/')
         else:
             return render(request, 'products/edit.html', {'form': form})
