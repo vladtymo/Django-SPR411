@@ -61,6 +61,10 @@
 					<a href="{% url 'edit_product_with_return' product.id request.path %}" class="btn btn-sm btn-outline-secondary">
 						<i class="bi bi-pen-fill"></i>
 					</a>
+					<a href="{% url 'add_to_cart' product.id request.path %}" class="btn btn-sm btn-outline-primary">
+						<i class="bi bi-cart-plus-fill"></i>
+						Add to Cart
+					</a>
 				</div>
 			</div>
 		</div>

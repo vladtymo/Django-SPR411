@@ -9,6 +9,7 @@ from products_app import views
 urlpatterns = [
     path('', include('products_app.urls')),
     path('about/', views.about, name='about'),
+    path('cart/', include('cart_app.urls')),
     path('admin/', admin.site.urls),
 ]
 

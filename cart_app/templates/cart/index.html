@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    My Cart
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Shopping Cart</h5>
+
+    {% for item in cart_items %}
+    <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between">
+            {{ item.name }}
+            <span class="text-muted">{{ item.price }}$</span>
+        </li>
+    </ul>
+    {% endfor %}
+
+    <a href="{% url 'index' %}" class="btn btn-primary">Continue Shopping</a>
+    <a href="#" class="btn btn-success">Confirm</a>
+  </div>
+  <div class="card-footer text-body-secondary">
+    Total Price: {{ total_price }}$
+  </div>
+</div>
+{% endblock %}
