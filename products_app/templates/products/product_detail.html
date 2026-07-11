@@ -56,6 +56,12 @@
 						{% endif %}
 					</li>
 				</ul>
+
+				<div>
+					<a href="{% url 'edit_product_with_return' product.id request.path %}" class="btn btn-sm btn-outline-secondary">
+						<i class="bi bi-pen-fill"></i>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

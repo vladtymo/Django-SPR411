@@ -77,7 +77,7 @@ def create_product(request):
     form = product.ProductForm()
     return render(request, 'products/create.html', {'form': form})
 
-def edit_product(request, product_id):
+def edit_product(request, product_id, return_url=None):
     item = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':
@@ -85,6 +85,8 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Product updated successfully!')
+            if return_url:
+                return redirect(return_url)
             return redirect('/products/admin/')
         else:
             return render(request, 'products/edit.html', {'form': form})
