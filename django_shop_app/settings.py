@@ -16,12 +16,9 @@ SECRET_KEY = 'django-insecure-)$c*!!_edkx!9yno4+ivy7spi7in&!_wn)$-7rdtiw^7l-z2!*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-CSRF_TRUSTED_ORIGINS = [
-    "djangoexample-gagsh8hsbtajhac3.canadacentral-01.azurewebsites.net",
-]
-ALLOWED_HOSTS = [
-    'djangoexample-gagsh8hsbtajhac3.canadacentral-01.azurewebsites.net'
-]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
 
 # Application definition
 
